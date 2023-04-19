@@ -65,10 +65,13 @@ describe('font subsetting', function () {
         subset.includeGlyph(glyph);
       }
       subset.includeTable('OS/2');
+      subset.includeTable('name');
 
       let buf = subset.encode();
-      let f = fontkit.create(buf);      
+      let f = fontkit.create(buf);
+
       assert.equal(f.hasOwnProperty('OS/2'), true);
+      assert.equal(f.hasOwnProperty('name'), true);
     });
 
   });
